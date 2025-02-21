@@ -2,7 +2,7 @@
     <div class="md:flex flex-1 md:items-stretch md:flex-row">
         <div class="h-[60%] md:h-full w-full">
             <client-only>
-                <Map :density="density" :startHash="startHash" ref="mapComponent" @densityChange="densityUpdate" @hashChange="hashUpdate" @surfaceUpdate="surfaceUpdate" />
+                <Map :densities="densities" :startHash="startHash" ref="mapComponent" @polygonsChange="polygonsUpdate" @densitiesChange="densitiesUpdate" @selectedChange="selectedUpdate" @hashChange="hashUpdate" />
             </client-only>
         </div>
         <div class="flex flex-col relative w-full lg:w-2/3 py-2 md:px-4 font-sans md:border-l border-gray-500 bg-slate-100">
@@ -13,30 +13,68 @@
                 <div class="text-sm mt-1 font-semibold">Source on github : <iframe class="inline" src="https://ghbtns.com/github-btn.html?user=paraboul&repo=mapchecking&type=star&count=false" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe></div>
             </div>
 
-            <div class="shadow-md md:rounded-md px-4 py-3 bg-white md:mt-4 mb-4 md:mb-1">
-                <div v-if="surface !== 0" class="relative">
-                    <span class="text-sm text-gray-700">Surface area <span class="font-semibold">{{ surface.toFixed(0) }}sqm</span> &bull; <span class="font-semibold">{{ surface_feet.toFixed(0) }}sqft</span></span>
+            Peaple: {{estimated}}
+            <div>
+                <div class="accordion" id="accordionExample">
 
-                    <button @click="mapComponent.reset()" class="rounded absolute right-0 px-2 py-1 text-xs inline-block bg-red-400 shadow-md text-white font-bold hover:shadow-none focus:outline-none">Reset the area</button>
-                    <div class="mt-2 space-y-2">
-                        <span class="font-semibold">Crowd density <span class="text-xs text-gray-700"><a class="underline hover:no-underline" target="_blank" href="http://www.gkstill.com/Support/crowd-density/625sm/Density6.html">What does it look like?</a></span></span>
-                        <input class="block w-full" type="range" min="0.1" max="5.0" step="0.05"  v-model.number="density" />
+                    <div v-for="(polygon, i) in polygons" :key="polygon.color.slice(1)" class="accordion-item">
+                        <h2 class="accordion-header" :id="`heading${polygon.color.slice(1)}`"
+                            :style="{ color: polygon.color }">
+                            <button class="accordion-button" :class="{ collapsed: selected != i }" type="button"
+                                data-bs-toggle="collapse" :data-bs-target="`#collapse${polygon.color.slice(1)}`"
+                                :aria-expanded="i === 0" :aria-controls="`collapse${polygon.color.slice(1)}`"
+                                @click="mapComponent.setSelectedPolygon(i); selected = i">
+                                <div :style="{ backgroundColor: polygon.color }" style="height: 1rem; width: 1rem;">
+
+                                </div>
+                                Surface: {{ polygon.surface.toFixed(2) }} || People: {{ (densities[i] * polygon.surface).toFixed(0) }} || Density: {{ densities[i] }}
+                            </button>
+                        </h2>
+                        <div :id="`collapse${polygon.color.slice(1)}`" class="accordion-collapse collapse"
+                            :class="{ show: selected === i }" :aria-labelledby="`heading${polygon.color.slice(1)}`"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                                <div v-if="i !== 0">
+                                    <button :key="'remove-button' + i"
+                                        @click="mapComponent.removePolygon(i); selected -= 1">
+                                        Remove
+                                    </button>
+                                </div>
+                                <div v-if="i === 0 && polygons.length == 1">
+                                    <button :key="'reset-button' + i"
+                                        @click="mapComponent.resetPolygon(i);">
+                                        Reset
+                                    </button>
+                                </div>
+
+                                <div v-if="polygon.surface !== 0">
+                                    <div class="mt-2 space-y-2">
+                                        <span class="font-semibold">Crowd density</span>
+                                        <input class="block w-full" type="range" min="0.1" max="5.0" step="0.1"
+                                            v-model="densities[i]" />
+                                    </div>
+                                    <div class="flex justify-around pt-2 mt-2">
+                                        <button @click="setDensity(i, 0.3)" class="btn">Light</button>
+                                        <button @click="setDensity(i, 2)" class="btn">Crowded</button>
+                                        <button @click="setDensity(i, 4)" class="btn">Packed</button>
+                                    </div>
+                                </div>
+
+                                <div class="text-center font-bold" v-else>
+                                    Start by delimiting an area on the map
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="flex justify-around pt-2 mt-2">
-                        <button @click="setDensity(0.3)" class="btn">Light</button>
-                        <button @click="setDensity(2)" class="btn">Crowded</button>
-                        <button @click="setDensity(4)" class="btn">Packed</button>
-                    </div>
-                    <div class="text-center mt-2">
-                        <span class="block font-semibold text-teal-600 tabular-nums">{{ density.toFixed(2) }} people per sqm <small>(~10 sqft)</small></span>
-                        <span class="inline-block mt-2 text-xl font-bold text-gray-800 tabular-nums">{{ estimated }} estimated</span>
-                    </div>
+
                 </div>
-                <div class="text-center font-bold" v-else>
-                    Start by delimiting an area on the map
-                </div>
+
+                <button class="btn" @click="mapComponent.addPolygon(); selected = polygons.length - 1">Add</button>
             </div>
+
             <div class="shadow-md md:rounded-md px-4 py-3 bg-red-50 shadow-red-100 md:mt-4  mb-4 md:mb-1 text-sm text-red-600">
                 ⚠️ It's easy to overestimate the density as the crowd is rarely uniformly packed. This is what <strong>2 people per square meter</strong> looks like from a low angle :
                 <div class="flex space-x-2 mt-1">
@@ -69,34 +107,52 @@
 <script setup lang="ts">
 import Map from './components/Map.vue'
 import { tatween, Easing } from 'tatween';
-import { computed, ref } from '@vue/reactivity';
+import { computed, Ref, ref } from '@vue/reactivity';
 
-const surface = ref(0);
-const density = ref(1.5);
 const startHash = !import.meta.env.SSR && window.location.hash && window.location.hash.length > 3 ?
                 window.location.hash.substring(1) : ''
 
 const mapComponent = ref();
 
-const surfaceUpdate = (data: number) => {
-    surface.value = data;
+const polygons: Ref<{ color: string, surface: number }[]> = ref([]);
+const densities: Ref<number[]> = ref([1.5, 1.5, 1.5, 1.5, 1.5, 1.5]);
+const selected: Ref<number> = ref(0);
+
+const polygonsUpdate = (values: { color: string, surface: number }[]) => {
+    polygons.value = [...values];
+}
+
+const densitiesUpdate = (values: number[]) => {
+    densities.value = values;
+}
+
+const selectedUpdate = (val: number) => {
+   selected.value = val; 
 }
 
 const hashUpdate = (hash: string) => {
     window.location.hash = hash;
 }
 
-const densityUpdate = (val: number) => {
-    density.value = val;
+const setDensity = (index: number, val: number) => {
+    densities.value[index] = val;
+    // tatween(800, Easing.Exponential.Out, (obj) => {
+    //     obj.value[index] = val;
+    // }, densities);
 }
 
-const setDensity = (val: number) => {
-    tatween(800, Easing.Exponential.Out, (obj) => {
-        obj.value = val;
-    }, density)
-}
-
-const surface_feet = computed(() => (surface.value * 10.764))
-const estimated = computed(() => Math.round(surface.value * density.value))
+const estimated = computed(() => {
+    let total = 0;
+    polygons.value.forEach((p, i) => {
+        total += Math.round(p.surface * densities.value[i])
+    });
+    return total;
+})
 
 </script>
+
+<style lang="css">
+.collapse.show {
+    visibility: visible !important;
+}
+</style>
