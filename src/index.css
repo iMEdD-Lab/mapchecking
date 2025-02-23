@@ -120,4 +120,44 @@ how to remove the virtical space around the range input in IE*/
   width: 300px;
 }
 
+.footer-notice {
+  bottom: 0;
+  background: #fff;
+  padding: 5px 8px;
+  font-size: 14px;
+}
+
+.header-logo {
+  max-width: 144px;
+  height: auto;
+}
+
+.language-switcher {
+  @apply bg-link;
+  padding: 5px 9px;
+  border-radius: 50%;
+}
+
+.link {
+  @apply text-link;
+}
+
+.total-estimate {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.info-icon {
+  @apply float-left;
+  max-width: 22px;
+  margin-right: 15px;
+}
+
+.map-pre-icon {
+  @apply float-left;
+  max-width: 15px;
+  margin-right: 10px; 
+}
+
+
 @tailwind utilities;

@@ -1,7 +1,9 @@
 <template>
-    <div class="w-full h-full">
+    <div class="w-full h-full relative">
         <input ref="pacinput" id="pac-input" class="controls" :class="[mapLoaded ? '' : 'hidden']" type="text" placeholder="Search a place">
         <div class="w-full h-full" ref="mapel"></div>
+        <div class="w-full absolute footer-notice">Το εργαλείο αυτό αποτελεί προσαρμογή και επέκταση του εργαλείου MapChecking του Anthony Catel για το iMedD Lab από την Sociality. Διατίθεται ως ΕΛ/ΛΑΚ εδώ. Εικονίδια από 
+            Anthony Raj και White Spaces Inc. στο NounProject.</div>
     </div>
 </template>
 

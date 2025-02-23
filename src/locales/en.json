@@ -1,0 +1,13 @@
+{
+  "main": {
+    "mainTitle": "Crowd counting tool",
+	"toolDescription": "Το εργαλείο αυτό σου επιτρέπει να μετρήσεις εύκολα πόσο κόσμο έχει σε μια περιοχή. Το εργαλείο αυτό σου επιτρέπει να μετρήσεις εύκολα πόσο κόσμο έχει σε μια περιοχή",
+	"descriptionLink": "View more here",
+	"estimateTitle": "Total crowd estimate",
+	"people": "people",
+	"examples": "examples"
+  },
+  "accordion": {
+	"description": "Start by delimiting an area on the map"
+  }
+}
