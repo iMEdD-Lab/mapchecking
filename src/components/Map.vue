@@ -249,9 +249,9 @@
     const reloadHash = (hash: string) => {
          loadHash(hash);
 
-         ["insert_at", "remove_at", "set_at"].forEach(ev => google.maps.event.addListener(currentPolygon.getPath(), ev, surfaceUpdated));
+        //  ["insert_at", "remove_at", "set_at"].forEach(ev => google.maps.event.addListener(currentPolygon.getPath(), ev, surfaceUpdated));
 
-         updatePolygonColor();
+        //  updatePolygonColor();
     }
 
     /*
