@@ -231,4 +231,12 @@ h1, h2 {
   line-height: 1; 
 }
 
+.map-wrapper,.dashboard-wrapper {
+  max-height: 100vh;
+}
+
+.dashboard-wrapper {
+  overflow-y: auto;
+}
+
 @tailwind utilities;

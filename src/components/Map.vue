@@ -16,7 +16,7 @@
     import * as GMaps from '@googlemaps/js-api-loader'
     const { Loader } = GMaps
 
-    const DEFAULT_MAP_POSITION = [48.862895, 2.286978, 18]
+    const DEFAULT_MAP_POSITION = [37.98184, 23.728583, 18]
 
     const loader = new Loader({
         apiKey: `${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`,
@@ -189,6 +189,8 @@
         polygons.splice(i, 1);
 
         my_data.splice(i, 1);
+
+        setSelectedPolygon(selectedPolygon-1);
         emits('polygonsChange', my_data);
     }
 
@@ -245,11 +247,11 @@
     }
 
     const reloadHash = (hash: string) => {
-        // loadHash(hash);
+         loadHash(hash);
 
-        // ["insert_at", "remove_at", "set_at"].forEach(ev => google.maps.event.addListener(currentPolygon.getPath(), ev, surfaceUpdated));
+         ["insert_at", "remove_at", "set_at"].forEach(ev => google.maps.event.addListener(currentPolygon.getPath(), ev, surfaceUpdated));
 
-        // updatePolygonColor();
+         updatePolygonColor();
     }
 
     /*

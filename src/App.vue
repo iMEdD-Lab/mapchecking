@@ -1,14 +1,14 @@
 <template>
     <div class="md:flex flex-1 md:items-stretch md:flex-row">
-        <div class="h-[60%] md:h-full w-full">
+        <div class="h-[60%] md:h-full w-full map-wrapper">
             <client-only>
                 <Map :densities="densities" :startHash="startHash" ref="mapComponent" @polygonsChange="polygonsUpdate" @densitiesChange="densitiesUpdate" @selectedChange="selectedUpdate" @hashChange="hashUpdate" />
             </client-only>
         </div>
-        <div class="flex flex-col relative w-full lg:w-2/3 py-2--- md:px-4--- font-sans md:border-l border-gray-500 bg-gray-100">
+        <div class="flex flex-col relative w-full lg:w-2/3 py-2--- md:px-4--- font-sans md:border-l border-gray-500 bg-gray-100 dashboard-wrapper">
             <div class="px-1 md:px-0 bg-white flex items-center">
                 <div class="px-3">
-                    <img class="header-logo" src="/iMEdD_logo.png/">
+                    <img class="header-logo" src="/iMEdD_logo.png">
                 </div>
                 <div class="w-full px-4 py-2 text-white bg-customPrimary flex items-center justify-between">
                     <h1 class="text-xl md:text-2xl font-semibold">{{ $t("main.mainTitle") }}</h1>  
@@ -29,7 +29,7 @@
                 <div>
                     <div class="accordion" id="accordionExample">
 
-                        <div v-for="(polygon, i) in polygons" :key="polygon.color.slice(1)" class="accordion-item  shadow-md md:rounded-md">
+                        <div v-for="(polygon, i) in polygons" :key="polygon.color.slice(1)" class="accordion-item  shadow-md md:rounded-md"  :style="{ backgroundColor: polygon.color+'30' }">
                             <h2 class="accordion-header font-sans font-semibold" :id="`heading${polygon.color.slice(1)}`"
                                 :style="{ color: polygon.color }">
                                 <button class="accordion-button" :class="{ collapsed: selected != i }" type="button"
@@ -69,7 +69,7 @@
                                         {{ $t("accordion.description") }}
                                     </div>
                                     <div class="md:mt-4  mb-4 md:mb-1 text-sm text-lighter">
-                                        <img class="info-icon" src="/info.png/"> {{ $t("accordion.extraInfo") }} <a class="link" href="https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html">{{ $t("accordion.infoLink") }}</a>
+                                        <img class="info-icon" src="/info.png"> {{ $t("accordion.extraInfo") }} <a class="link" href="https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html">{{ $t("accordion.infoLink") }}</a>
                                         <div class="flex space-x-2 mt-1">
                                             <a class="font-semibold underline hover:no-underline" target="blank" href="https://www.gkstill.com/_Media/3-4_med_hr.png">Image 1</a>
                                             <a class="font-semibold underline hover:no-underline" target="blank" href="https://www.gkstill.com/_Media/4-4_med_hr.png">Image 2</a>
@@ -107,9 +107,9 @@
                     <h2 class="font-bold mb-2">{{ $t("main.examples") }}</h2>
 
                     <div class="flex gap-2 flex-wrap">
-                        <a href="javascript:void(0)" @click="mapComponent.reloadHash('bAAAgQJtzQ0LZXRJAAACQQVdzQ0K-UxJAlHNDQl5REkDTc0NCz1ESQP9zQ0KFUxJAHnRDQv5WEkA8dENC51oSQEF0Q0LRXhJAPnRDQldjEkA2dENCo2YSQA50Q0KPaxJA_HNDQq5uEkDac0NCV28SQJRzQ0IhcBJAYnNDQvFuEkAzc0NCEWoSQPNyQ0LIXxJAGnNDQsNZEkA')" class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png/"> 26.01.25 - Πλ.Συντάγματος</a>
-                        <a href="javascript:void(0)" @click="mapComponent.reloadHash('bAAAAQEJ4Q0IdShdAAACQQcp4Q0IfKxdAeXlDQtI7F0CseENClVIXQNl3Q0IeaBdAG3dDQnlYF0A')" class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png/"> 26.01.25 - Εγνατία Οδός</a>
-                        <a href="javascript:void(0)" @click="mapComponent.reloadHash('ceNolzr-rAXAUBfBvvfW99Z2U2MwGG3HwJ1gssmJjkEWZpfyKKEpIfoSUkqzKYiAZlYxkMRmdMn1u93ZPxxjDTDwYeDdAY0r-SCIYeGiOynAH9MjfHuiWrz7olPcBaJPWMfgvVzPwpAzvAuzKpUzJ7BwMybruLtmcgnZ5mYA_sqz_a0z7EbiRjiGYlrkuWJCFFriTlzZ4lhn1msltHdzLQ-mb-8yDSTkugmtpqYA3GZF_6nesgj45r4Efb-1WKg')" class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png/"> 26.01.25 - Πλ. Γεωργίου</a>
+                        <a href="javascript:void(0)" @click="mapComponent.reloadHash('bqOcXQgzhvUEAAJBBAAAgQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwD985hdCjN-9QbTmF0Jz371B7eYXQmrfvUE_5xdCmt-9QYznF0Lx371BZOcXQn7ivUHZ5hdCU-K9QVDmF0IN4r1B')" class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Πλ.Συντάγματος</a>
+                        <a href="javascript:void(0)" @click="mapComponent.reloadHash('bFnNDQkt6EkAAAIhBAAAgQQAAiEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwD9Fc0NCO3sSQBp0Q0J_oBJAeXJDQki5EkAAAAAAoHFDQvA-EkBHckNCp2kSQClxQ0J2fBJAv3BDQnhcEkA')" class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Εγνατία Οδός</a>
+                        <a href="javascript:void(0)" @click="mapComponent.reloadHash('ceNolzr-rAXAUBfBvvfW99Z2U2MwGG3HwJ1gssmJjkEWZpfyKKEpIfoSUkqzKYiAZlYxkMRmdMn1u93ZPxxjDTDwYeDdAY0r-SCIYeGiOynAH9MjfHuiWrz7olPcBaJPWMfgvVzPwpAzvAuzKpUzJ7BwMybruLtmcgnZ5mYA_sqz_a0z7EbiRjiGYlrkuWJCFFriTlzZ4lhn1msltHdzLQ-mb-8yDSTkugmtpqYA3GZF_6nesgj45r4Efb-1WKg')" class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Πλ. Γεωργίου</a>
                         <a href="javascript:void(0)" @click="mapComponent.reloadHash('bAAAAQHoRUkLzzlVBAABwQRsPUkISoVVB0A5SQhKhVUF_EFJChAhWQccQUkJBCFZB')" class="btn rounded-md text-sm">Tiergarten 🇩🇪</a>
                     </div>
                 </div>
