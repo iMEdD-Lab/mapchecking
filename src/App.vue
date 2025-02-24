@@ -47,19 +47,7 @@
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
 
-                                    <div v-if="i !== 0">
-                                        <button :key="'remove-button' + i"
-                                            @click="mapComponent.removePolygon(i); selected -= 1">
-                                            Remove
-                                        </button>
-                                    </div>
-                                    <div v-if="i === 0 && polygons.length == 1">
-                                        <button :key="'reset-button' + i"
-                                            @click="mapComponent.resetPolygon(i);">
-                                            Reset
-                                        </button>
-                                    </div>
-
+                                    
                                     <div v-if="polygon.surface !== 0">
                                         <div class="mt-2 space-y-2">
                                             <div class="flex justify-between font-slab text-lighter mb-4">
@@ -89,6 +77,20 @@
                                             <span></span>
                                         </div>
                                     </div>
+
+                                    <div v-if="i !== 0" class="flex justify-end">
+                                        <button :key="'remove-button' + i" class="round-button button-minus"
+                                            @click="mapComponent.removePolygon(i); selected -= 1">
+                                            &mdash; 
+                                        </button>
+                                    </div>
+                                    <div v-if="i === 0 && polygons.length == 1" class="flex justify-end">
+                                        <button :key="'reset-button' + i" class="round-button button-minus"
+                                            @click="mapComponent.resetPolygon(i);">
+                                            &mdash; 
+                                        </button>
+                                    </div>
+
 
                                 </div>
                             </div>
