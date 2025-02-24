@@ -2,10 +2,18 @@
 
 @tailwind components;
 
+@font-face{
+  font-family: 'Roboto';
+  src: url('/fonts/Roboto-VariableFont.woff2') format('woff2');
+}
 
+@font-face{
+  font-family: 'RobotoSlab';
+  src: url('/fonts/RobotoSlab-VariableFont.woff2') format('woff2');
+}
 
 .btn {
-    @apply bg-white border border-teal-500 text-teal-500 rounded-lg font-semibold py-1 px-2;
+    @apply bg-white border text-darker shadow-md rounded-lg font-semibold py-1 px-2;
 }
 
 .btn:focus {
@@ -132,10 +140,11 @@ how to remove the virtical space around the range input in IE*/
   height: auto;
 }
 
-.language-switcher {
+.round-button {
   @apply bg-link;
   padding: 5px 9px;
   border-radius: 50%;
+  color: #fff;
 }
 
 .link {
@@ -159,5 +168,59 @@ how to remove the virtical space around the range input in IE*/
   margin-right: 10px; 
 }
 
+.add-polygon-btn {
+  @apply shadow-md;
+  padding: 2px 10px 3px;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.accordion-item {
+  margin-bottom: 20px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  @apply bg-darker;
+  @apply border-darker;
+}
+
+input[type="range"]::-moz-range-track {
+  @apply bg-lighter;
+  border-radius: 12px;
+  height: 9px;
+}
+
+.accordion-number {
+  color: #fff;
+  border-radius: 50%;
+  padding: 4px 11px 3px;
+  margin-right: 5px;
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  right: 10px;
+}
+
+.accordion-button:not(.collapsed) {
+  @apply text-lighter;
+  background: transparent;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image:  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button:focus {
+  border:none;
+  box-shadow: none;
+}
+
+h1, h2 {
+  @apply font-slab;
+}
 
 @tailwind utilities;

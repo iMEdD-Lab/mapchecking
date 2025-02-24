@@ -408,7 +408,8 @@
         addPolygon,
         removePolygon,
         resetPolygon,
-        reloadHash
+        reloadHash,
+        setSelectedPolygon
     })
 
 </script>

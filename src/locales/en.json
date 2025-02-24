@@ -5,9 +5,15 @@
 	"descriptionLink": "View more here",
 	"estimateTitle": "Total crowd estimate",
 	"people": "people",
-	"examples": "examples"
+	"examples": "EXAMPLES"
   },
   "accordion": {
-	"description": "Start by delimiting an area on the map"
+	"areaUnit": "m<sup>2</sup>",
+	"people": "people",
+	"crowdDensity": "Crowd density",
+	"crowdDensityPerArea": "people per m<sup>2</sup>",
+	"description": "Start by delimiting an area on the map",
+	"extraInfo": "It's easy to overestimate the density as the crowd is rarely uniformly packed",
+	"infoLink": "View more here"
   }
 }

@@ -11,10 +11,10 @@
                     <img class="header-logo" src="/iMEdD_logo.png/">
                 </div>
                 <div class="w-full px-4 py-2 text-white bg-customPrimary flex items-center justify-between">
-                    <h1 class="text-xl md:text-2xl">{{ $t("main.mainTitle") }}</h1>  
+                    <h1 class="text-xl md:text-2xl font-semibold">{{ $t("main.mainTitle") }}</h1>  
                
-                    <button v-if="$i18n.locale=='el'" @click="changeLang('en')" class="language-switcher">EN</button> 
-                    <button v-else @click="changeLang('el')" class="language-switcher">ΕΛ</button>           
+                    <button v-if="$i18n.locale=='el'" @click="changeLang('en')" class="language-switcher round-button">EN</button> 
+                    <button v-else @click="changeLang('el')" class="language-switcher round-button">ΕΛ</button>           
                 </div>
             </div>
             <div class="order-last--- md:order-first--- px-4 py-3 mb-4 md:mb-0 md:px-0 bg-white">
@@ -23,23 +23,23 @@
             <div class="px-4">
                 <div class="text-center">
                     <h3 class="text-l md:text-xl text-lighter">{{ $t("main.estimateTitle") }}</h3>  
-                    <div class="total-estimate text-darker">{{estimated}} {{ $t("main.people") }}</div>
+                    <div class="total-estimate text-darker font-slab font-semibold">{{estimated}} {{ $t("main.people") }}</div>
                 </div>
                 
                 <div>
-                    <div class="accordion shadow-md md:rounded-md " id="accordionExample">
+                    <div class="accordion" id="accordionExample">
 
-                        <div v-for="(polygon, i) in polygons" :key="polygon.color.slice(1)" class="accordion-item">
-                            <h2 class="accordion-header" :id="`heading${polygon.color.slice(1)}`"
+                        <div v-for="(polygon, i) in polygons" :key="polygon.color.slice(1)" class="accordion-item  shadow-md md:rounded-md">
+                            <h2 class="accordion-header font-sans font-semibold" :id="`heading${polygon.color.slice(1)}`"
                                 :style="{ color: polygon.color }">
                                 <button class="accordion-button" :class="{ collapsed: selected != i }" type="button"
                                     data-bs-toggle="collapse" :data-bs-target="`#collapse${polygon.color.slice(1)}`"
                                     :aria-expanded="i === 0" :aria-controls="`collapse${polygon.color.slice(1)}`"
                                     @click="mapComponent.setSelectedPolygon(i); selected = i">
-                                    <div :style="{ backgroundColor: polygon.color }" style="height: 1rem; width: 1rem;">
-
+                                    <div :style="{ backgroundColor: polygon.color }" class="accordion-number">
+                                        {{ i+1 }}
                                     </div>
-                                    Surface: {{ polygon.surface.toFixed(2) }} || People: {{ (densities[i] * polygon.surface).toFixed(0) }} || Density: {{ densities[i] }}
+                                    {{ polygon.surface.toFixed(2) }} <span v-html='$t("accordion.areaUnit")'></span> | {{ (densities[i] * polygon.surface).toFixed(0) }} {{ $t("accordion.people") }} <!--|| Density: {{ densities[i] }}-->
                                 </button>
                             </h2>
                             <div :id="`collapse${polygon.color.slice(1)}`" class="accordion-collapse collapse"
@@ -62,27 +62,31 @@
 
                                     <div v-if="polygon.surface !== 0">
                                         <div class="mt-2 space-y-2">
-                                            <span class="font-semibold">Crowd density</span>
+                                            <div class="flex justify-between font-slab text-lighter mb-4">
+                                                <span class="font-semibold text-lg">{{ $t("accordion.crowdDensity") }}</span>
+                                               <div> {{ densities[i] }} <span v-html='$t("accordion.crowdDensityPerArea")'></span></div>
+                                            </div>
                                             <input class="block w-full" type="range" min="0.1" max="5.0" step="0.1"
                                                 v-model="densities[i]" />
+                                            <div class="flex w-full justify-between my-0"><span class="text-2xl text-lighter">0</span><span class="text-2xl text-lighter">5</span></div>
                                         </div>
-                                        <div class="flex justify-around pt-2 mt-2">
+                                        <!--<div class="flex justify-around pt-2 mt-2">
                                             <button @click="setDensity(i, 0.3)" class="btn">Light</button>
                                             <button @click="setDensity(i, 2)" class="btn">Crowded</button>
                                             <button @click="setDensity(i, 4)" class="btn">Packed</button>
-                                        </div>
+                                        </div>-->
                                     </div>
 
                                     <div class="text-center font-bold" v-else>
                                         {{ $t("accordion.description") }}
                                     </div>
                                     <div class="md:mt-4  mb-4 md:mb-1 text-sm text-lighter">
-                                        <img class="info-icon" src="/info.png/"> It's easy to overestimate the density as the crowd is rarely uniformly packed. This is what <strong>2 people per square meter</strong> looks like from a low angle :
+                                        <img class="info-icon" src="/info.png/"> {{ $t("accordion.extraInfo") }} <a class="link" href="https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html">{{ $t("accordion.infoLink") }}</a>
                                         <div class="flex space-x-2 mt-1">
                                             <a class="font-semibold underline hover:no-underline" target="blank" href="https://www.gkstill.com/_Media/3-4_med_hr.png">Image 1</a>
                                             <a class="font-semibold underline hover:no-underline" target="blank" href="https://www.gkstill.com/_Media/4-4_med_hr.png">Image 2</a>
                                             <a class="font-semibold underline hover:no-underline" target="blank" href="https://www.gkstill.com/_Media/2-2_med_hr.png">Image 3</a>
-                                            <span>(<a class="underline hover:no-underline" href="https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html">source</a>)</span>
+                                            <span></span>
                                         </div>
                                     </div>
 
@@ -93,7 +97,7 @@
 
                     </div>
 
-                    <button class="btn" @click="mapComponent.addPolygon(); selected = polygons.length - 1">Add</button>
+                    <button class="round-button add-polygon-btn" @click="mapComponent.addPolygon(); selected = polygons.length - 1">+</button>
                 </div>
 
                 

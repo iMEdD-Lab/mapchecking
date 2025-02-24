@@ -8,8 +8,8 @@ import el from "./locales/el.json";
 import en from "./locales/en.json";
 
 const i18n = createI18n({
-    locale: "en",
-    fallbackLocale: "el",
+    locale: "el",
+    fallbackLocale: "en",
     messages: { el, en },
   });
   

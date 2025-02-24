@@ -12,6 +12,10 @@ module.exports = {
             darker: '#484E4E',
             lighter: "#666F6F",
         },
+        fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+            slab: ['RobotoSlab', 'serif'],
+        },
     }
    
   },
