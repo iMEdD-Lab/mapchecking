@@ -82,7 +82,7 @@
                 if (place.geometry?.location) {
                     currentMap.setCenter(place.geometry.location);
                     currentMap.setZoom(17);
-                    polygons.map((p,i)=> resetPolygon(i));
+                    resetAll();
                 } else {
                     pacinput.value?.blur()
 
@@ -103,8 +103,7 @@
 
                         currentMap.setCenter(res.geometry.location);
                         currentMap.setZoom(17);
-                        polygons.map((p,i)=> resetPolygon(i));
-                        
+                        resetAll();
                     })
                 }
 
@@ -138,7 +137,8 @@
         const index = polygons.length;
 
         setNewPolygon(index);
-        setListeners(index);
+        // setListeners(index);
+        setListeners(polygons[index]);
         emits('polygonsChange', my_data);
     }
 
@@ -161,24 +161,36 @@
         setPolygonColor(index);
     }
 
-    const setListeners = (index: number) => {
-        google.maps.event.addListener(polygons[index].getPath(), 'insert_at', (event) => {
-            surfaceUpdated(index); //alert the index of the polygon
-            emits('selectedChange', index); //alert the index of the polygon
+    // const setListeners = (index: number) => {
+    const setListeners = (polygon: google.maps.Polygon) => {
+        google.maps.event.addListener(polygon.getPath(), 'insert_at', (event) => {
+            let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            console.log("Listener 1b", currentIndex);
+            surfaceUpdated(currentIndex); //alert the index of the polygon
+            emits('selectedChange', currentIndex); //alert the index of the polygon
             emits('polygonsChange', my_data);
         });
-        google.maps.event.addListener(polygons[index].getPath(), 'remove_at', (event) => {
-            surfaceUpdated(index); //alert the index of the polygon
-            emits('selectedChange', index); //alert the index of the polygon
+        google.maps.event.addListener(polygon.getPath(), 'insert_at', (event) => {
+            let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            surfaceUpdated(currentIndex); //alert the index of the polygon
+            emits('selectedChange', currentIndex); //alert the index of the polygon
             emits('polygonsChange', my_data);
         });
-        google.maps.event.addListener(polygons[index].getPath(), 'set_at', (event) => {
-            surfaceUpdated(index); //alert the index of the polygon
-            emits('selectedChange', index); //alert the index of the polygon
+        google.maps.event.addListener(polygon.getPath(), 'remove_at', (event) => {
+            let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            surfaceUpdated(currentIndex); //alert the index of the polygon
+            emits('selectedChange', currentIndex); //alert the index of the polygon
             emits('polygonsChange', my_data);
         });
-        google.maps.event.addListener(polygons[index], 'click', (event) => {
-            emits('selectedChange', index); //alert the index of the polygon
+        google.maps.event.addListener(polygon.getPath(), 'set_at', (event) => {
+            let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            surfaceUpdated(currentIndex); //alert the index of the polygon
+            emits('selectedChange', currentIndex); //alert the index of the polygon
+            emits('polygonsChange', my_data);
+        });
+        google.maps.event.addListener(polygon, 'click', (event) => {
+            let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            emits('selectedChange', currentIndex); //alert the index of the polygon
         });
     }
 
@@ -187,6 +199,7 @@
 
         polygons[i].getPath().clear();
         polygons.splice(i, 1);
+        arrPoly.value.splice(i, 1);
 
         my_data.splice(i, 1);
 
@@ -300,7 +313,8 @@
                 if (path.length) {
                     (i > 0) ? setNewPolygon(i) : '';
                     polygons[i].setPath(path);
-                    setListeners(i);
+                    // setListeners(i);
+                    setListeners(polygons[i]);
                     surfaceUpdated(i);
                 }
         
@@ -394,6 +408,12 @@
         return (isCompressed ? 'c' : 'b') + Base64.fromUint8Array(outbuf, true);
     })
 
+    const resetAll = () => {
+        for (let i = my_data.length-1; i > -1; i--) {
+            if(i == 0) resetPolygon(i);
+            else removePolygon(i);
+        }
+    }
     // watch(() => props.density, () => updatePolygonColor());
 
     /*
@@ -411,7 +431,8 @@
         removePolygon,
         resetPolygon,
         reloadHash,
-        setSelectedPolygon
+        setSelectedPolygon,
+        resetAll
     })
 
 </script>

@@ -28,7 +28,7 @@
                     <h3 class="text-l md:text-xl text-lighter">{{ $t("main.estimateTitle") }}</h3>
                     <div class="total-estimate text-darker font-slab font-semibold">{{ estimated }} {{ $t("main.people")
                     }}</div>
-                    <button class="round-button button-reset"  @click="">
+                    <button class="round-button button-reset"  @click="mapComponent.resetAll();">
                       <img src="/reset-icon.svg">               
                     </button>
                 </div>
@@ -176,7 +176,7 @@ const images = [
     'https://www.gkstill.com/_Media/35-5_med_hr.png',
     'https://www.gkstill.com/_Media/40-5_med_hr.png',
     'https://www.gkstill.com/_Media/45-5_med_hr.png',
-    'https://www.gkstill.com/_Media/50-5_med_hr.png',
+    'https://www.gkstill.com/_Media/50-5_med_hr-2.png',
     'https://www.gkstill.com/_Media/55-5_med_hr.png',
     'https://www.gkstill.com/_Media/60-5_med_hr.png'
 ];
@@ -218,7 +218,7 @@ const getImage = (d: number) => {
     else if (densities.value[d] <= 5) return images[9];
     else if (densities.value[d] <= 5.5) return images[10];
     else if (densities.value[d] <= 6) return images[11];
-    else return images[5];
+    else return images[0];
 }
 
 const estimated = computed(() => {
