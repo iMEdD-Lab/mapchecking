@@ -165,31 +165,28 @@
     const setListeners = (polygon: google.maps.Polygon) => {
         google.maps.event.addListener(polygon.getPath(), 'insert_at', (event) => {
             let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
-            console.log("Listener 1b", currentIndex);
-            surfaceUpdated(currentIndex); //alert the index of the polygon
-            emits('selectedChange', currentIndex); //alert the index of the polygon
-            emits('polygonsChange', my_data);
-        });
-        google.maps.event.addListener(polygon.getPath(), 'insert_at', (event) => {
-            let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            selectedPolygon = currentIndex;
             surfaceUpdated(currentIndex); //alert the index of the polygon
             emits('selectedChange', currentIndex); //alert the index of the polygon
             emits('polygonsChange', my_data);
         });
         google.maps.event.addListener(polygon.getPath(), 'remove_at', (event) => {
             let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            selectedPolygon = currentIndex;
             surfaceUpdated(currentIndex); //alert the index of the polygon
             emits('selectedChange', currentIndex); //alert the index of the polygon
             emits('polygonsChange', my_data);
         });
         google.maps.event.addListener(polygon.getPath(), 'set_at', (event) => {
             let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            selectedPolygon = currentIndex;
             surfaceUpdated(currentIndex); //alert the index of the polygon
             emits('selectedChange', currentIndex); //alert the index of the polygon
             emits('polygonsChange', my_data);
         });
         google.maps.event.addListener(polygon, 'click', (event) => {
             let currentIndex = my_data.findIndex(x=> x.color == polygon['strokeColor']);
+            selectedPolygon = currentIndex;
             emits('selectedChange', currentIndex); //alert the index of the polygon
         });
     }
@@ -260,7 +257,8 @@
     }
 
     const reloadHash = (hash: string) => {
-         loadHash(hash);
+        resetAll();
+        loadHash(hash);
 
         //  ["insert_at", "remove_at", "set_at"].forEach(ev => google.maps.event.addListener(currentPolygon.getPath(), ev, surfaceUpdated));
 
@@ -294,7 +292,7 @@
         /* Extract density and path for every polygon */
         const data = new Float32Array(buf.buffer, 10 * 4);
 
-        let densities: number[] = [];
+        let densities: number[] = [1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5];
 
         for (let i = 0; i < 7; i++) {
             if (meta[3 + i] > 0) {
