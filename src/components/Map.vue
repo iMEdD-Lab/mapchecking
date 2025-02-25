@@ -16,7 +16,7 @@
     import * as GMaps from '@googlemaps/js-api-loader'
     const { Loader } = GMaps
 
-    const DEFAULT_MAP_POSITION = [37.98184, 23.728583, 18]
+    const DEFAULT_MAP_POSITION = [37.9754855, 23.734566, 17]
 
     const loader = new Loader({
         apiKey: `${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`,
