@@ -9,9 +9,9 @@
         <div
             class="flex flex-col relative w-full lg:w-2/3 py-2--- md:px-4--- font-sans md:border-l border-gray-500 bg-gray-100 dashboard-wrapper">
             <div class="px-1 md:px-0 bg-white flex items-center">
-                <div class="px-3">
-                    <img class="header-logo" src="/iMEdD_logo.png">
-                </div>
+                <a target="_blank" class="px-3" href="https://lab.imedd.org">
+                    <img class="header-logo" src="/imedd-lab-logo.svg">
+                </a>
                 <div class="w-full px-4 py-2 text-white bg-customPrimary flex items-center justify-between">
                     <h1 class="text-xl md:text-2xl font-semibold">{{ $t("main.mainTitle") }}</h1>
 
@@ -24,17 +24,20 @@
                 {{ $t("main.toolDescription") }}. <a href="#" class="link">{{ $t("main.descriptionLink") }}</a>
             </div>
             <div class="px-4">
-                <div class="text-center">
+                <div class="text-center relative">
                     <h3 class="text-l md:text-xl text-lighter">{{ $t("main.estimateTitle") }}</h3>
                     <div class="total-estimate text-darker font-slab font-semibold">{{ estimated }} {{ $t("main.people")
                     }}</div>
+                    <button class="round-button button-reset"  @click="">
+                      <img src="/reset-icon.svg">               
+                    </button>
                 </div>
 
                 <div>
                     <div class="accordion" id="accordionExample">
 
                         <div v-for="(polygon, i) in polygons" :key="polygon.color.slice(1)"
-                            class="accordion-item  shadow-md md:rounded-md"
+                            class="accordion-item shadow-md md:rounded-md"
                             :style="{ backgroundColor: polygon.color + '30' }">
                             <h2 class="accordion-header font-sans font-semibold"
                                 :id="`heading${polygon.color.slice(1)}`" :style="{ color: polygon.color }">
@@ -61,7 +64,7 @@
                                             <div class="flex justify-between font-slab text-lighter mb-4">
                                                 <span class="density-text">{{ $t("accordion.crowdDensity")
                                                 }}</span>
-                                                <div> {{ densities[i] }} <span class="density-value"
+                                                <div><span class="density-text mr-1">{{ densities[i] }}</span> <span class="density-value"
                                                         v-html='$t("accordion.crowdDensityPerArea")'></span></div>
                                             </div>
                                             <input class="block w-full" type="range" min="0.1" max="6.0" step="0.1"
@@ -131,14 +134,14 @@
                     <div class="flex gap-2 flex-wrap">
                         <a href="javascript:void(0)"
                             @click="mapComponent.reloadHash('bvOYXQvbgvUEAAJBBAAAgQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwD985hdCjN-9QbTmF0Jz371B7eYXQmrfvUE_5xdCmt-9QYznF0Lx371BZOcXQn7ivUHZ5hdCU-K9QVDmF0IN4r1B')"
-                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 -
-                            Πλ.Συντάγματος</a>
+                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 
+                            Πλ.Συντάγματος, Αθήνα</a>
                         <a href="javascript:void(0)"
                             @click="mapComponent.reloadHash('ba4ciQrKGt0EAAJBBAAAgQQAAmEEAAKBBAACoQQAAsEEAALhBAADAQQAAwD9lhyJCDYa3QeeHIkIbh7dBtYciQtKHt0EvhyJCyYa3QQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
-                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Πλ.Αριστοτέλους</a>
+                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> Πλ.Αριστοτέλους, Θεσσαλονίκη</a>
                         <a href="javascript:void(0)"
                             @click="mapComponent.reloadHash('ceNqL-SPhpPBwrSMDwwQgVgBiEycGBgsgtgFiByB2AWIPID5gbw1Ua_tgraMbkDYC0plA-v_9tY61QJoXyN8DpM8C6Z1A-h2QXgJSDzR7OpB2BtJiQLrt0VrHf78lnBYA6fdA-jyQPgyk64H0ciAtDKS3A-mzQPW7gXQdkN4ApN2AtCJQvyLQXAYcAAAPI0_0')"
-                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Πλ.Γεωργίου</a>
+                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> Πλ. Β. Γεωργίου, Πάτρα</a>
                     </div>
                 </div>
                 <div class="grow"></div>

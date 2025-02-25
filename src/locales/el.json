@@ -15,5 +15,8 @@
 	"description": "Σχεδιάσε μια περιοχή στον χάρτη αριστερά για να ξεκινήσεις",
 	"extraInfo": "Είναι εύκολο να υπερεκτιμήσει κανείς το πλήθος. Δείτε το παράδειγμα της εικόνας και άλλα σχετικά παραδείγματα",
 	"infoLink": "εδώ"
+  },
+  "map": {
+	"footer": "Το εργαλείο αυτό αποτελεί προσαρμογή και επέκταση του εργαλείου MapChecking του Anthony Catel για το <a target='_blank' href='https://lab.imedd.org/'><strong>iMedD Lab</strong></a> από την <a target='_blank' href='https://sociality.gr/?utm_source=imeddMapChecking&utm_medium=referral&utm_campaign=Footer%20Signature'><strong>Sociality</strong></a>. Διατίθεται ως ΕΛ/ΛΑΚ εδώ. Εικονίδια από <strong>Anthony Raj</strong> και <strong>White Spaces Inc.</strong> στο <strong>NounProject</strong>."
   }
 }

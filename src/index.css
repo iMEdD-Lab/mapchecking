@@ -136,7 +136,7 @@ how to remove the virtical space around the range input in IE*/
 }
 
 .header-logo {
-  max-width: 144px;
+  max-width: 155px;
   height: auto;
 }
 
@@ -259,6 +259,25 @@ h1, h2 {
 .density-value {
   font-size: 1.1rem;
   font-weight: normal;
+}
+
+.button-reset {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  background-color: #ffa500;
+  padding: 5px 6px 0 5px;
+}
+
+.button-reset img {
+  margin-left: 3px;
+}
+
+a:hover {
+  color: #a21812;
 }
 
 @tailwind utilities;

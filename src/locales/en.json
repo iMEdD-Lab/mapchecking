@@ -15,5 +15,8 @@
 	"description": "Start by delimiting an area on the map",
 	"extraInfo": "It's easy to overestimate the density as the crowd is rarely uniformly packed",
 	"infoLink": "View more here"
+  },
+  "map": {
+	"footer": ""
   }
 }

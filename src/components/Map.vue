@@ -2,8 +2,7 @@
     <div class="w-full h-full relative map-container">
         <input ref="pacinput" id="pac-input" class="controls" :class="[mapLoaded ? '' : 'hidden']" type="text" placeholder="Search a place">
         <div class="w-full h-full" ref="mapel"></div>
-        <div class="w-full absolute footer-notice">Το εργαλείο αυτό αποτελεί προσαρμογή και επέκταση του εργαλείου MapChecking του Anthony Catel για το iMedD Lab από την Sociality. Διατίθεται ως ΕΛ/ΛΑΚ εδώ. Εικονίδια από 
-            Anthony Raj και White Spaces Inc. στο NounProject.</div>
+        <div class="w-full absolute footer-notice" v-html='$t("map.footer")'></div>
     </div>
 </template>
 
@@ -29,7 +28,7 @@
         startHash: string
     }>()
 
-    const colors: string[] = [ '#e81416', '#ffa500','#faeb36','#79c314','#487de7','#4b369d', '#70369d' ];
+    const colors: string[] = [ '#e81416', '#ffa500','#114B5F','#79c314','#487de7','#047d12', '#70369d' ];
     //const colors: string[] = [ '#F0A202', '#BA3A0B','#114B5F','#DCE1D1','#DBD6DF','#CC9EA6', '#EADB88' ];
 
     const emits = defineEmits<{

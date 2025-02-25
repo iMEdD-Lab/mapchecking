@@ -8,8 +8,8 @@ import el from "./locales/el.json";
 import en from "./locales/en.json";
 
 const i18n = createI18n({
-    locale: "el",
-    fallbackLocale: "en",
+    locale: `${import.meta.env.VITE_TOOL_LOCALE}`,
+    fallbackLocale: `${import.meta.env.VITE_TOOL_LOCALE_FALLBACK}`,
     messages: { el, en },
   });
   
