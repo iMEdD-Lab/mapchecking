@@ -59,16 +59,16 @@
                                     <div v-if="polygon.surface !== 0">
                                         <div class="mt-2 space-y-2">
                                             <div class="flex justify-between font-slab text-lighter mb-4">
-                                                <span class="font-semibold text-lg">{{ $t("accordion.crowdDensity")
+                                                <span class="density-text">{{ $t("accordion.crowdDensity")
                                                 }}</span>
-                                                <div> {{ densities[i] }} <span
+                                                <div> {{ densities[i] }} <span class="density-value"
                                                         v-html='$t("accordion.crowdDensityPerArea")'></span></div>
                                             </div>
                                             <input class="block w-full" type="range" min="0.1" max="5.0" step="0.1"
                                                 v-model="densities[i]" />
                                             <div class="flex w-full justify-between my-0"><span
-                                                    class="text-2xl text-lighter">0</span><span
-                                                    class="text-2xl text-lighter">5</span>
+                                                    class="text-lighter slider-legend">0</span><span
+                                                    class="text-lighter slider-legend">5</span>
                                             </div>
                                             <img v-bind:src="getImage(i)" alt="" style="width: 60%; margin: auto;">
                                         </div>
@@ -120,7 +120,7 @@
 
                     </div>
 
-                    <button class="round-button add-polygon-btn"
+                    <button v-if="polygons.length < 7" class="round-button add-polygon-btn"
                         @click="mapComponent.addPolygon(); selected = polygons.length - 1">+</button>
                 </div>
 
@@ -130,20 +130,15 @@
 
                     <div class="flex gap-2 flex-wrap">
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('bqOcXQgzhvUEAAJBBAAAgQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwD985hdCjN-9QbTmF0Jz371B7eYXQmrfvUE_5xdCmt-9QYznF0Lx371BZOcXQn7ivUHZ5hdCU-K9QVDmF0IN4r1B')"
+                            @click="mapComponent.reloadHash('bvOYXQvbgvUEAAJBBAAAgQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwD985hdCjN-9QbTmF0Jz371B7eYXQmrfvUE_5xdCmt-9QYznF0Lx371BZOcXQn7ivUHZ5hdCU-K9QVDmF0IN4r1B')"
                             class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 -
                             Πλ.Συντάγματος</a>
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('bFnNDQkt6EkAAAIhBAAAgQQAAiEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwD9Fc0NCO3sSQBp0Q0J_oBJAeXJDQki5EkAAAAAAoHFDQvA-EkBHckNCp2kSQClxQ0J2fBJAv3BDQnhcEkA')"
-                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Εγνατία
-                            Οδός</a>
+                            @click="mapComponent.reloadHash('ba4ciQrKGt0EAAJBBAAAgQQAAmEEAAKBBAACoQQAAsEEAALhBAADAQQAAwD9lhyJCDYa3QeeHIkIbh7dBtYciQtKHt0EvhyJCyYa3QQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
+                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Πλ.Αριστοτέλους</a>
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('ceNolzr-rAXAUBfBvvfW99Z2U2MwGG3HwJ1gssmJjkEWZpfyKKEpIfoSUkqzKYiAZlYxkMRmdMn1u93ZPxxjDTDwYeDdAY0r-SCIYeGiOynAH9MjfHuiWrz7olPcBaJPWMfgvVzPwpAzvAuzKpUzJ7BwMybruLtmcgnZ5mYA_sqz_a0z7EbiRjiGYlrkuWJCFFriTlzZ4lhn1msltHdzLQ-mb-8yDSTkugmtpqYA3GZF_6nesgj45r4Efb-1WKg')"
-                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Πλ.
-                            Γεωργίου</a>
-                        <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('bAAAAQHoRUkLzzlVBAABwQRsPUkISoVVB0A5SQhKhVUF_EFJChAhWQccQUkJBCFZB')"
-                            class="btn rounded-md text-sm">Tiergarten 🇩🇪</a>
+                            @click="mapComponent.reloadHash('ceNqL-SPhpPBwrSMDwwQgVgBiEycGBgsgtgFiByB2AWIPID5gbw1Ua_tgraMbkDYC0plA-v_9tY61QJoXyN8DpM8C6Z1A-h2QXgJSDzR7OpB2BtJiQLrt0VrHf78lnBYA6fdA-jyQPgyk64H0ciAtDKS3A-mzQPW7gXQdkN4ApN2AtCJQvyLQXAYcAAAPI0_0')"
+                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 26.01.25 - Πλ.Γεωργίου</a>
                     </div>
                 </div>
                 <div class="grow"></div>

@@ -147,6 +147,10 @@ how to remove the virtical space around the range input in IE*/
   color: #fff;
 }
 
+.language-switcher {
+  line-height: 1.65;
+}
+
 .link {
   @apply text-link;
 }
@@ -237,6 +241,20 @@ h1, h2 {
 
 .dashboard-wrapper {
   overflow-y: auto;
+}
+
+.slider-legend {
+  font-size: 1.2rem;
+}
+
+.density-text {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.density-value {
+  font-size: 1.1rem;
+  font-weight: normal;
 }
 
 @tailwind utilities;

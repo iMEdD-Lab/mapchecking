@@ -30,6 +30,7 @@
     }>()
 
     const colors: string[] = [ '#e81416', '#ffa500','#faeb36','#79c314','#487de7','#4b369d', '#70369d' ];
+    //const colors: string[] = [ '#F0A202', '#BA3A0B','#114B5F','#DCE1D1','#DBD6DF','#CC9EA6', '#EADB88' ];
 
     const emits = defineEmits<{
         (event: "polygonsChange", val: { color: string, surface: number }[]): void
