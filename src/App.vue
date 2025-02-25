@@ -64,11 +64,11 @@
                                                 <div> {{ densities[i] }} <span class="density-value"
                                                         v-html='$t("accordion.crowdDensityPerArea")'></span></div>
                                             </div>
-                                            <input class="block w-full" type="range" min="0.1" max="5.0" step="0.1"
+                                            <input class="block w-full" type="range" min="0.1" max="6.0" step="0.1"
                                                 v-model="densities[i]" />
                                             <div class="flex w-full justify-between my-0"><span
                                                     class="text-lighter slider-legend">0</span><span
-                                                    class="text-lighter slider-legend">5</span>
+                                                    class="text-lighter slider-legend">6</span>
                                             </div>
                                             <img v-bind:src="getImage(i)" alt="" style="width: 60%; margin: auto;">
                                         </div>
@@ -164,12 +164,18 @@ const densities: Ref<number[]> = ref([1.5, 1.5, 1.5, 1.5, 1.5, 1.5]);
 const selected: Ref<number> = ref(0);
 
 const images = [
-    'https://www.gkstill.com/_Media/100-2_med_hr.png',
-    'https://www.gkstill.com/_Media/200-2_med_hr.png',
-    'https://www.gkstill.com/_Media/300-2_med_hr.png',
-    'https://www.gkstill.com/_Media/400-2_med_hr.png',
-    'https://www.gkstill.com/_Media/500-2_med_hr.png',
-    'https://www.gkstill.com/_Media/600-2_med_hr.png'
+    'https://www.gkstill.com/_Media/05-5_med_hr.png',
+    'https://www.gkstill.com/_Media/10-5_med_hr.png',
+    'https://www.gkstill.com/_Media/15-5_med_hr.png',
+    'https://www.gkstill.com/_Media/20-5_med_hr.png',
+    'https://www.gkstill.com/_Media/25-5_med_hr.png',
+    'https://www.gkstill.com/_Media/30-5_med_hr.png',
+    'https://www.gkstill.com/_Media/35-5_med_hr.png',
+    'https://www.gkstill.com/_Media/40-5_med_hr.png',
+    'https://www.gkstill.com/_Media/45-5_med_hr.png',
+    'https://www.gkstill.com/_Media/50-5_med_hr.png',
+    'https://www.gkstill.com/_Media/55-5_med_hr.png',
+    'https://www.gkstill.com/_Media/60-5_med_hr.png'
 ];
 
 const polygonsUpdate = (values: { color: string, surface: number }[]) => {
@@ -197,11 +203,18 @@ const setDensity = (index: number, val: number) => {
 
 const getImage = (d: number) => {
 
-    if (densities.value[d] < 1.5) return images[0];
-    else if (densities.value[d] < 2.5) return images[1];
-    else if (densities.value[d] < 3.5) return images[2];
-    else if (densities.value[d] < 4.5) return images[3];
-    else if (densities.value[d] < 5.5) return images[4];
+    if (densities.value[d] <= 0.5) return images[0];
+    else if (densities.value[d] <= 1) return images[1];
+    else if (densities.value[d] <= 1.5) return images[2];
+    else if (densities.value[d] <= 2) return images[3];
+    else if (densities.value[d] <= 2.5) return images[4];
+    else if (densities.value[d] <= 3) return images[5];
+    else if (densities.value[d] <= 3.5) return images[6];
+    else if (densities.value[d] <= 4) return images[7];
+    else if (densities.value[d] <= 4.5) return images[8];
+    else if (densities.value[d] <= 5) return images[9];
+    else if (densities.value[d] <= 5.5) return images[10];
+    else if (densities.value[d] <= 6) return images[11];
     else return images[5];
 }
 
