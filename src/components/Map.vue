@@ -299,7 +299,7 @@
                 let startingPosition = meta[3 + i] - 10;
                 let endingPosition = (meta[3 + i + 1] > 0) ? meta[3 + i + 1] - 10 - 1 : data.length;
                 let arr = [...data.slice(startingPosition, endingPosition + 1)];
-                densities.push((arr[0]) ? Math.round(arr[0]*10)/10 : 0);
+                densities[i] = ((arr[0]) ? Math.round(arr[0]*10)/10 : 0);
                 
                 let path: google.maps.LatLngLiteral[] = [];
                 for (let j = 1; j < arr.length; j += 2) {
@@ -318,7 +318,7 @@
         
                 emits('selectedChange', i);
             } else {
-                densities.push(0)
+                densities[i] = 0;
             }
         }
 
