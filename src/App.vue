@@ -8,7 +8,7 @@
         </div>
         <div
             class="flex flex-col relative w-full lg:w-2/3 py-2--- md:px-4--- font-sans md:border-l border-gray-500 bg-gray-100 dashboard-wrapper">
-            <div class="px-1 md:px-0 bg-white flex items-center">
+            <div class="px-1 md:px-0 bg-white items-center main-title hidden md:flex">
                 <a target="_blank" class="px-3" href="https://lab.imedd.org">
                     <img class="header-logo" src="/imedd-lab-logo.svg">
                 </a>
@@ -20,9 +20,7 @@
                     <button v-else @click="changeLang('el')" class="language-switcher round-button">ΕΛ</button>
                 </div>
             </div>
-            <div class="order-last--- md:order-first--- px-4 py-3 mb-4 md:mb-0 md:px-0 bg-white">
-                {{ $t("main.toolDescription") }}. <a href="#" class="link">{{ $t("main.descriptionLink") }}</a>
-            </div>
+            <div class=" hidden md:block order-last--- md:order-first--- px-4 py-3 mb-4 md:mb-0 md:px-0 bg-white"  v-html='$t("main.toolDescription")'></div>
             <div class="px-4">
                 <div class="text-center relative">
                     <h3 class="text-l md:text-xl text-lighter">{{ $t("main.estimateTitle") }}</h3>
@@ -73,7 +71,9 @@
                                                     class="text-lighter slider-legend">0</span><span
                                                     class="text-lighter slider-legend">6</span>
                                             </div>
-                                            <img v-bind:src="getImage(i)" alt="" style="width: 60%; margin: auto;">
+                                            <a v-bind:href="getImage(i)" target="_blank">
+                                                <img v-bind:src="getImage(i)" alt="" style="width: 80%; margin: auto;">
+                                            </a>
                                         </div>
                                         <!--<div class="flex justify-around pt-2 mt-2">
                                             <button @click="setDensity(i, 0.3)" class="btn">Light</button>
@@ -133,19 +133,25 @@
 
                     <div class="flex gap-2 flex-wrap">
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('bvOYXQvbgvUEAAJBBAAAgQQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwD985hdCjN-9QbTmF0Jz371B7eYXQmrfvUE_5xdCmt-9QYznF0Lx371BZOcXQn7ivUHZ5hdCU-K9QVDmF0IN4r1B')"
+                            @click="mapComponent.reloadHash('ceNotzy9Ig0EYx_ErJhUUw9UVjZb3FQSDdye2rTiEYRBRHDKTWKZhBouIgyFaxCJosA1BxHBoEKNJQRjT-fruH2NhYWuDfW9bePjcvc_vfXhutyrN-5_VQuSoCPVNTRghfGqHOqXyxvM8la5Ic_ZrdR73sY4pXGDGFZ5gCzcwE1j9RT-OURxHIZQ6oHfL2bnyb_V1eZC5wYf-Hq-L7tsT50uM0QtCadrcixjvZ4RK1KTp0NtEnzkF5k25eTgXWr2HS-h2eiaXTM6oO84jJavPMWTPI5xmXgqPyRxidpi95_xJZgvTOIbz-MZbfMxgFGO4hsuYxS5u4wX5Brr3lNgx92N1Ez9wEiV7FMkk8BFn8QWr_BNghPsouQL3VVzHHqBCylE')"
                             class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 
-                            Πλ.Συντάγματος, Αθήνα</a>
+                            {{ $t("examples.ex1") }}
+                        </a>
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('ba4ciQrKGt0EAAJBBAAAgQQAAmEEAAKBBAACoQQAAsEEAALhBAADAQQAAwD9lhyJCDYa3QeeHIkIbh7dBtYciQtKHt0EvhyJCyYa3QQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')"
-                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> Πλ.Αριστοτέλους, Θεσσαλονίκη</a>
+                            @click="mapComponent.reloadHash('ceNo1jr2OgUEUhie7id1sdi9gOyahIxJqvjOiUOiUEhIJKoVOR_x8H-EyNFrFcQt61CR6UUoQD4lJ3jwz57znnbPwreuOVYwJUBit0LczJo2q6H08r4J3PlT5DayL-Sor3rlA5ROuRyoJGId5eMT3nLlxb_RVtvAP3kbW7enF4ZrZIvx5_W-88hjPROWCt03-Bn7gyVDvUC_AEkylltn7wLr_mcoOnqcqvaF1J3pR8g7MFGCS3Ho95NXYN8ReLRiBX9An_0p-Ez4AlzBd0A')"
+                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 
+                            {{ $t("examples.ex2") }}
+                        </a>
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('ceNqL-SPhpPBwrSMDwwQgVgBiEycGBgsgtgFiByB2AWIPID5gbw1Ua_tgraMbkDYC0plA-v_9tY61QJoXyN8DpM8C6Z1A-h2QXgJSDzR7OpB2BtJiQLrt0VrHf78lnBYA6fdA-jyQPgyk64H0ciAtDKS3A-mzQPW7gXQdkN4ApN2AtCJQvyLQXAYcAAAPI0_0')"
-                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> Πλ. Β. Γεωργίου, Πάτρα</a>
+                            @click="mapComponent.reloadHash('ceNpt0LErhGEcB_B3YDEpyRmURBaDwWAw3HsGEYvBQmKTP0ApLFgkGShXSMllee_YLtzEarrcRI4zKAPlLEfxeXdvPX16n-f5Pd_n-b18J1Kfj1EYBNtGu9GXCv79ZpIDP4nUYDkKh9jPedZzhU0ssMgLVnkS73-Kwj0Os4Wbz1H4KzPDD97xhus8ZSvzLNp_xTWec5Qd6rudGwTJZK2WSC26d5e1L45xztoS73nAXjVZTvOSS4zPjpjjKzNslhn_j_Gaqywxxyof2CD7kG1Ms4dH7OcZR_jGSbZUonCBo0wzz02WucxbTnCWnayoi3sT59TkNZqvxL1ggSXzuxznFut4zA333-EUB7nv3e_6ktWPPyQc5mQ')"
+                            class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png">
+                            {{ $t("examples.ex3") }}
+                        </a>
                     </div>
                 </div>
                 <div class="grow"></div>
             </div>
+            <div class="w-full footer-notice block md:hidden" v-html='$t("map.footer")'></div>
         </div>
     </div>
 </template>

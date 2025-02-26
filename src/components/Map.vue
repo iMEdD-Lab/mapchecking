@@ -1,8 +1,21 @@
 <template>
     <div class="w-full h-full relative map-container">
+        <div class="px-1 md:px-0 bg-white flex md:hidden items-center main-title">
+                <a target="_blank" class="px-3" href="https://lab.imedd.org">
+                    <img class="header-logo" src="/imedd-lab-logo.svg">
+                </a>
+                <div class="w-full px-4 py-2 text-white bg-customPrimary flex items-center justify-between">
+                    <h1 class="text-xl md:text-2xl font-semibold">{{ $t("main.mainTitle") }}</h1>
+
+                    <button v-if="$i18n.locale == 'el'" @click="changeLang('en')"
+                        class="language-switcher round-button">EN</button>
+                    <button v-else @click="changeLang('el')" class="language-switcher round-button">ΕΛ</button>
+                </div>
+        </div>
+        <div class="block md:hidden order-last--- md:order-first--- px-4 py-3 mb-4 md:mb-0 md:px-0 bg-white"  v-html='$t("main.toolDescription")'></div>
         <input ref="pacinput" id="pac-input" class="controls" :class="[mapLoaded ? '' : 'hidden']" type="text" placeholder="Search a place">
         <div class="w-full h-full" ref="mapel"></div>
-        <div class="w-full absolute footer-notice" v-html='$t("map.footer")'></div>
+        <div class="w-full absolute footer-notice hidden md:block" v-html='$t("map.footer")'></div>
     </div>
 </template>
 
@@ -424,7 +437,6 @@
         { debounce: 300 })
 
     defineExpose({
-        // reset,
         addPolygon,
         removePolygon,
         resetPolygon,

@@ -280,4 +280,14 @@ a:hover {
   color: #a21812;
 }
 
+/* Repsonsive */
+
+@media screen and (max-width: 767px) {
+  .dashboard-wrapper{
+    padding-top: 30px;
+    max-height: none;
+    overflow-y: initial;
+  }
+}
+
 @tailwind utilities;

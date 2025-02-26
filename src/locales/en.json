@@ -1,8 +1,7 @@
 {
   "main": {
     "mainTitle": "Crowd counting tool",
-	"toolDescription": "Το εργαλείο αυτό σου επιτρέπει να μετρήσεις εύκολα πόσο κόσμο έχει σε μια περιοχή. Το εργαλείο αυτό σου επιτρέπει να μετρήσεις εύκολα πόσο κόσμο έχει σε μια περιοχή",
-	"descriptionLink": "View more here",
+	"toolDescription": "The crowd counter allows you, after defining an area on the map, to estimate how many people could fit in it, depending on the population density per square meter. See how to use the tool <a href='https://lab.imedd.org/en/crowd-counter/' target='_blank'><strong>here</strong></a>.",
 	"estimateTitle": "Total crowd estimate",
 	"people": "people",
 	"examples": "EXAMPLES"
@@ -17,6 +16,11 @@
 	"infoLink": "View more here"
   },
   "map": {
-	"footer": ""
+    "footer": "This tool is a modification and extension of <a href='https://www.mapchecking.com/' target='_blank'><strong>MapChecking</strong></a>, created by Anthony Catel, for <a target='_blank' href='https://lab.imedd.org/'><strong>iMedD Lab</strong></a> by <a target='_blank' href='https://sociality.gr/?utm_source=imeddMapChecking&utm_medium=referral&utm_campaign=Footer%20Signature'><strong>Sociality</strong></a>. It is available as FOSS <a href='https://github.com/iMEdD-Lab/mapchecking' target='_blank'><strong>here</strong></a>. The methodology and the visualizations are provided by <a href='https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html' target='_blank'><strong>Keith Still</strong></a>. Icons created by <a href='https://thenounproject.com/creator/anthonyj.animo' target='_blank'><strong>Anthony Raj</strong></a>, <a href='https://thenounproject.com/creator/WhiteSpacesIncorporated/' target='_blank'><strong>White Spaces Inc.</strong><a> and <a href='https://thenounproject.com/creator/kim9610/' target='_blank'><strong>KIM Hyojun</strong></a> as provided in the NounProject."
+  },
+  "examples":{
+	"ex1":"Syntagma Sq., Athens",
+	"ex2":"Aristotelous Sq., Thessaloniki",
+	"ex3":"Georgiou Sq.,  Patras"
   }
 }
