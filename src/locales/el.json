@@ -1,0 +1,26 @@
+{
+  "main": {
+    "mainTitle": "Μετρητής Πλήθους",
+    "toolDescription": "Ο μετρητής πλήθους σας επιτρέπει, αφού ορίσετε μία περιοχή στον χάρτη, να εκτιμήσετε πόσα άτομα θα μπορούσαν δυνητικά να χωρέσουν σε αυτή, ανάλογα με την πυκνότητα πληθυσμού ανά τετραγωνικό μέτρο. Δείτε πώς να  χρησιμοποιήσετε το εργαλείο <a href='https://lab.imedd.org/crowd-counter/' target='_blank'><strong>εδώ</strong></a>.",
+	"estimateTitle": "Συνολική εκτίμηση πλήθους",
+	"people": "άτομα",
+	"examples": "ΠΑΡΑΔΕΙΓΜΑΤΑ"
+  },
+  "accordion": {
+	"areaUnit": "τ.μ.",
+	"people": "άτομα",
+	"crowdDensity": "Πυκνότητα πλήθους",
+	"crowdDensityPerArea": "άτομα ανά τ.μ.",
+	"description": "Σχεδιάσε μια περιοχή στον χάρτη αριστερά για να ξεκινήσεις",
+	"extraInfo": "Είναι εύκολο να υπερεκτιμήσει κανείς το πλήθος. Δείτε το παράδειγμα της εικόνας και άλλα σχετικά παραδείγματα",
+	"infoLink": "εδώ"
+  },
+  "map": {
+    "footer": "Το εργαλείο αυτό αποτελεί προσαρμογή και επέκταση του εργαλείου <a href='https://www.mapchecking.com/' target='_blank'><strong>MapChecking</strong></a> του Anthony Catel για το <a target='_blank' href='https://lab.imedd.org/'><strong>iMedD Lab</strong></a> από την <a target='_blank' href='https://sociality.gr/?utm_source=imeddMapChecking&utm_medium=referral&utm_campaign=Footer%20Signature'><strong>Sociality</strong></a>. Διατίθεται ως ΕΛ/ΛΑΚ <a href='https://github.com/iMEdD-Lab/mapchecking' target='_blank'><strong>εδώ</strong></a>. Η μεθοδολογία και οι οπτικοποιήσεις δημιουργήθηκαν από τον <a href='https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html' target='_blank'><strong>Keith Still</strong></a>. Εικονίδια από <a href='https://thenounproject.com/creator/anthonyj.animo' target='_blank'><strong>Anthony Raj</strong></a>, <a href='https://thenounproject.com/creator/WhiteSpacesIncorporated/' target='_blank'><strong>White Spaces Inc.</strong><a> και <a href='https://thenounproject.com/creator/kim9610/' target='_blank'><strong>KIM Hyojun</strong></a> στο NounProject."
+  },
+  "examples":{
+	"ex1":"Πλ.Συντάγματος, Αθήνα",
+	"ex2":"Πλ.Αριστοτέλους, Θεσσαλονίκη",
+	"ex3":"Πλ. Β. Γεωργίου, Πάτρα"
+  }
+}
