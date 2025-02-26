@@ -244,7 +244,8 @@ h1, h2 {
 }
 
 .map-container {
-  padding-bottom: 52px;
+  padding-bottom: 73px;
+  /* padding-bottom: 52px; */
 }
 
 .slider-legend {

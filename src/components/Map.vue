@@ -24,6 +24,8 @@
     import { onMounted, ref, watch, computed } from 'vue';
     import { watchDebounced } from '@vueuse/core'
     import { zlibSync, unzlibSync } from 'fflate';
+    import { useI18n } from 'vue-i18n';
+    const { locale } = useI18n();
 
     import * as GMaps from '@googlemaps/js-api-loader'
     const { Loader } = GMaps
@@ -418,6 +420,14 @@
         */
         return (isCompressed ? 'c' : 'b') + Base64.fromUint8Array(outbuf, true);
     })
+
+    function changeLang(lang) {
+        locale.value = lang;
+        /* this.$store.dispatch('setLocale', lang)
+            .then(() => {
+                this.$router.replace({ query: { lang } });
+            });*/
+    }
 
     const resetAll = () => {
         for (let i = my_data.length-1; i > -1; i--) {

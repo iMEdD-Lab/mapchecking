@@ -133,17 +133,17 @@
 
                     <div class="flex gap-2 flex-wrap">
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('ceNotzy9Ig0EYx_ErJhUUw9UVjZb3FQSDdye2rTiEYRBRHDKTWKZhBouIgyFaxCJosA1BxHBoEKNJQRjT-fruH2NhYWuDfW9bePjcvc_vfXhutyrN-5_VQuSoCPVNTRghfGqHOqXyxvM8la5Ic_ZrdR73sY4pXGDGFZ5gCzcwE1j9RT-OURxHIZQ6oHfL2bnyb_V1eZC5wYf-Hq-L7tsT50uM0QtCadrcixjvZ4RK1KTp0NtEnzkF5k25eTgXWr2HS-h2eiaXTM6oO84jJavPMWTPI5xmXgqPyRxidpi95_xJZgvTOIbz-MZbfMxgFGO4hsuYxS5u4wX5Brr3lNgx92N1Ez9wEiV7FMkk8BFn8QWr_BNghPsouQL3VVzHHqBCylE')"
+                            @click="mapComponent.reloadHash('ceNotzy9Ig0EYx_EzmFRQDNdkRaPlfQXB4N2JbSsOYRhEFIesiWUaZrAMcSCiRSyCBtsQRAyHBrNJQRjT-fruH2NhYWuDfW9bePjcvc_vfXhupCrNzJ_VQmSpCPVNTRohfGqPOqXyxvM8la5Ic_ZrdR4PsI4pXGLGNWaxhVuYCaz-oh_HKE6gEEod0rvj7Fz7t_qmPMjc4mN_j7dl9-2Z8xXG6AWhNG3uRYz3M0IlatJ06G2jz5wC86bdPFwIrd7HFXQ7vZBLJufUPefRktUXGLLnMc4yL4UnZI4wN8w-cP4ks4NpHMdFfOctPmYwijHcwFXMYRd38ZJ8A917Sux4_mN1Ez9wCiV7FMkk8Ann8RWr_BNghPsYuQL3ddzEHsucyTc')"
                             class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 
                             {{ $t("examples.ex1") }}
                         </a>
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('ceNo1jr2OgUEUhie7id1sdi9gOyahIxJqvjOiUOiUEhIJKoVOR_x8H-EyNFrFcQt61CR6UUoQD4lJ3jwz57znnbPwreuOVYwJUBit0LczJo2q6H08r4J3PlT5DayL-Sor3rlA5ROuRyoJGId5eMT3nLlxb_RVtvAP3kbW7enF4ZrZIvx5_W-88hjPROWCt03-Bn7gyVDvUC_AEkylltn7wLr_mcoOnqcqvaF1J3pR8g7MFGCS3Ho95NXYN8ReLRiBX9An_0p-Ez4AlzBd0A')"
+                            @click="mapComponent.reloadHash('ceNo1jj8LQVEYxk8UEh_Axik2UpSNe44MBptRUQqTwWaUP_de8TF8AsO5X-HuGEyUXUblyu8OTj39zjnv8zy9NVvqq22UEA7KIg8ltBBVNED_Y1l9vIe1USlH6gIZj3fTMSoK_Y1RJViELfjAF2YC7uOlUWeYhsFG6huzIvTJdmDSDb3C6rl4tka98c7oP8EInjr_c_7bsAsrlWPju5I6szfqAl87oxZrqZ_M8vTdybRhmd7RKGYN2TfGXlOYg3Fo0_-hfwJ_emZdtQ')"
                             class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png"> 
                             {{ $t("examples.ex2") }}
                         </a>
                         <a href="javascript:void(0)"
-                            @click="mapComponent.reloadHash('ceNpt0LErhGEcB_B3YDEpyRmURBaDwWAw3HsGEYvBQmKTP0ApLFgkGShXSMllee_YLtzEarrcRI4zKAPlLEfxeXdvPX16n-f5Pd_n-b18J1Kfj1EYBNtGu9GXCv79ZpIDP4nUYDkKh9jPedZzhU0ssMgLVnkS73-Kwj0Os4Wbz1H4KzPDD97xhus8ZSvzLNp_xTWec5Qd6rudGwTJZK2WSC26d5e1L45xztoS73nAXjVZTvOSS4zPjpjjKzNslhn_j_Gaqywxxyof2CD7kG1Ms4dH7OcZR_jGSbZUonCBo0wzz02WucxbTnCWnayoi3sT59TkNZqvxL1ggSXzuxznFut4zA333-EUB7nv3e_6ktWPPyQc5mQ')"
+                            @click="mapComponent.reloadHash('ceNpt0LErhGEcB_B3YDEpyRmURBaDwWAw3HsGEYvBQmKTP0CpY8GiSwbKFVJyWd47tgs3sZouN5HjFmVgOMtRfN7dW0-f3ud5fr_v-_4-vxOp2ZcoDIJdq9saSgX_PgvJkZ9EarQahWMc5jKbuc42lljmFes8i-_rfcBxdjDzGoW_MnOMsx94xy2es5NFlt2_4SYvOcke9f36BkEy2WgkUqvPUdjn7ItTXHKW5iOPOKgmz3leM824d8QC35hju8z4fYq33GCFBdb5xBbZx-xilgM84TAvOMF3zrKjFoUrnGSWRWZY5RrvOcNF9rKmLp5NnNOQ12q_Fs-CJVbs73OaO2ziKbd9_x7nOMpD__1hLnnz-AMn8-Xa')"
                             class="btn rounded-md text-sm"><img class="map-pre-icon" src="/map.png">
                             {{ $t("examples.ex3") }}
                         </a>
@@ -160,7 +160,7 @@
 import Map from './components/Map.vue'
 import { tatween, Easing } from 'tatween';
 import { computed, Ref, ref } from '@vue/reactivity';
-import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 
 const startHash = !import.meta.env.SSR && window.location.hash && window.location.hash.length > 3 ?
