@@ -175,7 +175,7 @@ const selected: Ref<number> = ref(0);
 
 if(typeof window !== 'undefined') {
     let params = window.location.href.split('/');
-    (params[params.length-1] == 'en') ? changeLang('en') : changeLang(localStorage.getItem('lang') || 'el');
+    (params[params.length-1] == 'en' || params[params.length-2] == 'en') ? changeLang('en') : changeLang(localStorage.getItem('lang') || 'el');
 }
 
 const images = [
