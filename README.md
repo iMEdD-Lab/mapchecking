@@ -20,13 +20,13 @@ VITE_TOOL_LOCALE_FALLBACK =[en]
 
 ### Run locally
 ```sh
-npm run dev
+yarn dev
 ```
 Open **http://127.0.0.1:5173/** in your browser. Any changes are compiled automatically.
 
 ### Build for production
 ```sh
-npm run build
+yarn build
 ```
 The build can be found in **/dist** folder.
 
