@@ -83,6 +83,7 @@
                                         <div class="md:mt-4  mb-4 md:mb-1 text-sm text-lighter">
                                             <img class="info-icon" src="/info.png"> {{ $t("accordion.extraInfo") }}
                                             <a class="link"
+                                                target="_blank"
                                                 href="https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html">{{
                                                     $t("accordion.infoLink") }}
                                             </a>
@@ -172,6 +173,11 @@ const polygons: Ref<{ color: string, surface: number }[]> = ref([]);
 const densities: Ref<number[]> = ref([1.5, 1.5, 1.5, 1.5, 1.5, 1.5]);
 const selected: Ref<number> = ref(0);
 
+if(typeof window !== 'undefined') {
+    let params = window.location.href.split('/');
+    (params[params.length-1] == 'en' || params[params.length-2] == 'en') ? changeLang('en') : changeLang(localStorage.getItem('lang') || 'el');
+}
+
 const images = [
     'https://www.gkstill.com/_Media/05-5_med_hr.png',
     'https://www.gkstill.com/_Media/10-5_med_hr.png',
@@ -237,6 +243,7 @@ const estimated = computed(() => {
 
 function changeLang(lang) {
     locale.value = lang;
+    localStorage.setItem('lang', lang)    
     /* this.$store.dispatch('setLocale', lang)
          .then(() => {
              this.$router.replace({ query: { lang } });

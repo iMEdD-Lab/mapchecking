@@ -12,7 +12,8 @@ const i18n = createI18n({
     fallbackLocale: `${import.meta.env.VITE_TOOL_LOCALE_FALLBACK}`,
     messages: { el, en },
   });
-  
+
+
 export const createApp = ViteSSG(App,
     ({ app, initialState }) => {
       app.use(i18n)
