@@ -83,6 +83,7 @@
                                         <div class="md:mt-4  mb-4 md:mb-1 text-sm text-lighter">
                                             <img class="info-icon" src="/info.png"> {{ $t("accordion.extraInfo") }}
                                             <a class="link"
+                                                target="_blank"
                                                 href="https://www.gkstill.com/Support/crowd-density/CrowdDensity-1.html">{{
                                                     $t("accordion.infoLink") }}
                                             </a>
