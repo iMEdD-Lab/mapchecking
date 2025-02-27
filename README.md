@@ -1,6 +1,6 @@
 # Description
 
-The crowd counter allows you, after defining an area on the map, to estimate how many people could fit in it, depending on the population density per square meter. See how to use the tool [here]([https://pages.github.com/](https://lab.imedd.org/en/crowd-counter/).
+The crowd counter allows you, after defining an area on the map, to estimate how many people could fit in it, depending on the population density per square meter. See how to use the tool [here](https://lab.imedd.org/en/crowd-counter/).
 
 # For developers
 
